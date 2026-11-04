@@ -1,15 +1,3 @@
-const IMG = {
-  Metabolic:"photo-1587854692152-cbe660dbde88",
-  Recovery:"photo-1579154204601-01588f351e67",
-  "Skin / Repairs":"photo-1512290923902-8a9f81dc236c",
-  Cosmetic:"photo-1522337660859-02fbefca4702",
-  Cognitive:"photo-1559757175-0eb30cd8c063",
-  Longevity:"photo-1544367567-0f2fcb009e0b",
-  Growth:"photo-1532384748853-8f54a8f476e2",
-  Supply:"photo-1584308666744-24d5c474f2ae"
-};
-const imgUrl = c => "https://images.unsplash.com/" + (IMG[c] || IMG.Metabolic) + "?auto=format&fit=crop&w=700&q=75";
-
 const PRODUCTS = [
   {id:"reta-10", name:"Retatrutide", mg:"10 mg", cat:"Metabolic", price:34, was:79, purity:"99.4%", batch:"RV-R10-2604", flag:"Best seller"},
   {id:"tirz-10", name:"Tirzepatide", mg:"10 mg", cat:"Metabolic", price:39, was:89, purity:"99.6%", batch:"RV-T10-2603", flag:"High demand"},
@@ -43,17 +31,14 @@ let cart = JSON.parse(localStorage.getItem("bv_cart") || "[]");
 
 function card(p) {
   const save = Math.round((1 - p.price / p.was) * 100);
-  const rare = p.flag === "Rare" || p.flag === "New";
   return `<article class="card">
-    <div class="thumb">
-      <img src="${imgUrl(p.cat)}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">
-      ${p.flag ? `<span class="flag${rare ? " rare" : ""}">${p.flag}</span>` : ""}
-    </div>
-    <div class="top"><h3>${p.name}</h3><span class="price"><s>${money(p.was)}</s>${money(p.price)}</span></div>
-    <div class="mg">${p.mg} · ${p.purity} pure</div>
-    <div class="row">
-      <span class="coa" onclick="openCoa('${p.id}')">Verify batch ${p.batch}</span>
-      <button class="add" onclick="add('${p.id}')">Add · -${save}%</button>
+    <div class="chead"><span class="cat">${p.cat}</span><span class="save">−${save}%</span></div>
+    <h3>${p.name}</h3>
+    <div class="mg">${p.mg} vial · lyophilized powder</div>
+    <div class="spec">${p.purity} pure · batch ${p.batch} <span class="coa" onclick="openCoa('${p.id}')">verify</span></div>
+    <div class="cfoot">
+      <span class="price"><s>${money(p.was)}</s><b>${money(p.price)}</b></span>
+      <button class="add" onclick="add('${p.id}')">Add</button>
     </div>
   </article>`;
 }
