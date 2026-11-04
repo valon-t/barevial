@@ -3,27 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BareVial — Research-grade peptides. Bare pricing.</title>
-<meta name="description" content="Third-party COA on every batch. Ships in 24h. The cheapest verified research-peptide prices online. For research use only.">
+<title>BareVial — Peptides, without the markup</title>
+<meta name="description" content="Verified research peptides at bare prices. Third-party COA on every batch, shipped in 24 hours. Research use only.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="BareVial — Research-grade peptides. Bare pricing.">
-<meta property="og:description" content="COA on every batch. Ships 24h. Cheapest verified prices. RUO.">
-<meta property="og:type" content="website">
+<meta property="og:title" content="BareVial — Peptides, without the markup">
+<meta property="og:description" content="Verified research peptides at bare prices. COA on every batch. Ships 24h. RUO.">
 </head>
 <body>
 
 <header class="nav">
   <div class="nav-in">
-    <a class="brand" href="#top"><img src="assets/logo.svg" alt="">BareVial</a>
+    <a class="wordmark" href="#top">BareVial<i>ruo</i></a>
     <nav class="nav-links">
       <a href="#catalog">Catalog</a>
       <a href="#stacks">Stacks</a>
-      <a href="#club">Bare Club</a>
+      <a href="#club">Membership</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <button class="cart-btn" id="cartOpen" aria-label="Open cart">
-      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M6 6 5 3H2"/></svg>
+    <button class="cart-btn" id="cartOpen" aria-label="Cart">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.4 9H7.2z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6 5 3H2"/></svg>
       <span class="badge" id="badge" hidden>0</span>
     </button>
   </div>
@@ -31,41 +33,42 @@
 
 <main id="top">
   <section class="hero">
-    <div class="wrap">
-      <span class="eyebrow">● Third-party verified · Ships 24h</span>
-      <h1>Research-grade peptides. <span class="hl">Bare pricing.</span></h1>
-      <p class="lede">Every batch third-party tested and COA-backed. Shipped in 24 hours. The cheapest verified price on the internet — or we match it.</p>
-      <div class="hero-cta">
-        <a class="btn btn-accent" href="#catalog">Shop the catalog</a>
-        <a class="btn btn-ghost" href="#club">Join Bare Club — 15% off</a>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">Third-party verified · Ships in 24h</span>
+        <h1>Peptides, <em>without</em> the markup.</h1>
+        <p class="lede">Every batch independently tested and COA-backed. Cold-safe, dispatched in 24 hours. The bare price — or we beat it by $5.</p>
+        <div class="hero-cta">
+          <a class="btn btn-ink" href="#catalog">Shop the catalog</a>
+          <a class="textlink" href="#club">Join the club → 15% off</a>
+        </div>
+        <div class="hero-meta">
+          <span><b>99.3%</b> avg. purity</span>
+          <span><b>24h</b> dispatch</span>
+          <span><b>100%</b> COA backed</span>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="s"><b>99.3%</b><span>Avg. purity</span></div>
-        <div class="s"><b>24h</b><span>Dispatch</span></div>
-        <div class="s"><b>100%</b><span>COA backed</span></div>
-        <div class="s"><b>RUO</b><span>Research grade</span></div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1000&q=80" alt="Peptide vials under lab light" onerror="this.style.display='none'">
+        <div class="float-card"><span><span class="dot"></span>Batch verified</span><b>RV-R10-2604</b></div>
       </div>
     </div>
   </section>
 
-  <div class="trustbar">
+  <div class="band">
     <div class="wrap">
-      <span><b>HPLC + MS</b> tested</span>
-      <span><b>Batch COA</b> on every SKU</span>
-      <span><b>Blind shipped</b> in 24h</span>
-      <span><b>Cold-safe</b> lyophilized powder</span>
-      <span><b>Price match</b> guarantee</span>
+      <div class="s"><b>99.3%</b><span>Avg. purity</span></div>
+      <div class="s"><b>24h</b><span>Dispatch</span></div>
+      <div class="s"><b>19</b><span>Research SKUs</span></div>
+      <div class="s"><b>RUO</b><span>Research grade</span></div>
     </div>
   </div>
 
   <section id="catalog">
     <div class="wrap">
       <div class="sec-head">
-        <div>
-          <span class="tag">The catalog</span>
-          <h2>Bare pricing. No markup theatre.</h2>
-        </div>
-        <p>Every vial ships with a matching batch COA. Tap verify on any product to view its purity report.</p>
+        <h2>The <em>catalog.</em></h2>
+        <p>Every vial ships with a matching batch COA. Tap verify on any product to read its purity report.</p>
       </div>
       <div class="grid" id="productGrid"></div>
     </div>
@@ -74,66 +77,61 @@
   <section class="stacks" id="stacks">
     <div class="wrap">
       <div class="sec-head">
-        <div>
-          <span class="tag">Protocol stacks</span>
-          <h2>Buy the stack. Save more.</h2>
-        </div>
-        <p>Bundled for research protocols. Priced below buying singles — automatically.</p>
+        <h2>Protocol <em>stacks.</em></h2>
+        <p>Bundled for research protocols, priced below the singles — automatically.</p>
       </div>
-      <div class="stack" id="stackGrid"></div>
+      <div class="stack-list" id="stackList"></div>
     </div>
   </section>
 
-  <section class="club" id="club">
+  <section id="club">
     <div class="wrap club-grid">
       <div>
-        <span class="tag">Bare Club</span>
-        <h2>Lock your price. Forever.</h2>
-        <p style="color:var(--muted);margin-top:12px;max-width:44ch">Members keep their signup price even when list prices rise. Free bac water, priority dispatch, members-only drops. Cancel anytime.</p>
+        <span class="mono">The membership</span>
+        <h2 class="serif" style="font-size:clamp(32px,4.4vw,54px);line-height:1;letter-spacing:-.02em;margin-top:14px">Lock your price. <em style="font-style:italic;color:var(--rust)">Forever.</em></h2>
+        <p style="color:var(--soft);margin-top:16px;max-width:42ch">Members keep their signup price even when list prices rise. Free bac water, priority dispatch, members-only drops. Skip or cancel anytime.</p>
         <div class="tiers">
-          <div class="tier"><span class="disc">15%</span><span>Off every order, recurring<small>Free bac water + priority dispatch included</small></span></div>
-          <div class="tier"><span class="disc">20%</span><span>Off at 3+ vials per shipment<small>The more you run, the more you save</small></span></div>
-          <div class="tier"><span class="disc">25%</span><span>Off annual prepay<small>Upfront, biggest discount, price-locked</small></span></div>
+          <div class="tier"><span class="d">15%</span><span>Off every recurring order<small style="display:block">Free bac water + priority dispatch</small></span></div>
+          <div class="tier"><span class="d">20%</span><span>Off at 3+ vials per shipment<small style="display:block">The more you run, the more you save</small></span></div>
+          <div class="tier"><span class="d">25%</span><span>Off on annual prepay<small style="display:block">Upfront, biggest discount, price-locked</small></span></div>
         </div>
+        <a class="btn btn-ink" href="#catalog" style="margin-top:26px">Start a membership</a>
       </div>
-      <div class="club-card">
-        <h3>Members save an average of $212 / quarter.</h3>
-        <p>No lock-in. Skip or cancel from your dashboard anytime. Your signup price never rises while you're active.</p>
-        <a class="btn btn-accent btn-block" href="#catalog">Start a membership</a>
+      <div class="club-media"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80" alt="Researcher" onerror="this.style.display='none'"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><h2>On the <em>receipts.</em></h2><p>COA matched the lot, shipped same day, beat every quote.</p></div>
+      <div class="reviews">
+        <div class="review"><div class="stars">★★★★★</div><div class="qu">“COA matched the lot number exactly and shipped same day. Cheaper than my last three suppliers by a mile.”</div><div class="who"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=3&w=120&h=120&q=80" alt="" onerror="this.style.display='none'"><div><b>M. Okafor</b><span>Verified buyer</span></div></div></div>
+        <div class="review"><div class="stars">★★★★★</div><div class="qu">“Ordered the Wolverine stack Tuesday, in hand Thursday. Purity report in the box. Stupid easy.”</div><div class="who"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=3&w=120&h=120&q=80" alt="" onerror="this.style.display='none'"><div><b>D. Reyes</b><span>Verified buyer</span></div></div></div>
+        <div class="review"><div class="stars">★★★★★</div><div class="qu">“Price-matched a competitor then beat it by $6. The membership pays for itself in one order.”</div><div class="who"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=facearea&facepad=3&w=120&h=120&q=80" alt="" onerror="this.style.display='none'"><div><b>S. Lindqvist</b><span>Verified buyer</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap faq-grid">
+      <div><span class="mono">Questions</span><h2 class="serif" style="font-size:clamp(30px,3.6vw,44px);line-height:1;margin-top:12px">Fast answers.</h2></div>
+      <div class="faq">
+        <details><summary>Are these for human use?</summary><p>All vials are sold for research use only (RUO). They are not FDA-approved drugs and are not intended to diagnose, treat, or cure anything.</p></details>
+        <details><summary>How fast do orders ship?</summary><p>Dispatched within 24 hours on business days, blind-packed, lyophilized so no cold chain is needed. Tracking emailed the moment it leaves.</p></details>
+        <details><summary>Where do the COAs come from?</summary><p>Independent third-party labs. Every batch gets HPLC purity and mass-spec identity, matched to your vial's lot number. Verify on any product.</p></details>
+        <details><summary>What's the price-match guarantee?</summary><p>Find the same compound, same mg, lower verified price from a COA-backed vendor — send it and we beat it by $5.</p></details>
+        <details><summary>How does the membership work?</summary><p>Recurring, 15% off every order, price-locked while active. Skip or cancel anytime. Annual prepay unlocks 25%.</p></details>
+        <details><summary>How do I pay?</summary><p>Card, Apple/Google Pay, and crypto through high-risk-friendly gateways so peptide orders never get declined.</p></details>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="sec-head"><div><span class="tag">Receipts</span><h2>Researchers talk.</h2></div></div>
-      <div class="reviews">
-        <div class="review"><div class="stars">★★★★★</div><p>COA matched the lot number exactly and shipped same day. Cheaper than my last three suppliers by a mile.</p><div class="who"><b>M. Okafor</b> · verified buyer</div></div>
-        <div class="review"><div class="stars">★★★★★</div><p>Ordered the Wolverine stack Tuesday, in hand Thursday. Purity report in the box. Stupid easy.</p><div class="who"><b>D. Reyes</b> · verified buyer</div></div>
-        <div class="review"><div class="stars">★★★★★</div><p>Price-matched a competitor then beat it by $6. Bare Club pays for itself in one order.</p><div class="who"><b>S. Lindqvist</b> · verified buyer</div></div>
+      <div class="cta">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1600&q=80" alt="" onerror="this.style.display='none'">
+        <div class="in"><h2>Stop overpaying for vials.</h2><a class="btn btn-ink" href="#catalog">Shop the catalog</a></div>
       </div>
-    </div>
-  </section>
-
-  <section id="faq">
-    <div class="wrap">
-      <div class="sec-head"><div><span class="tag">Questions</span><h2>Fast answers.</h2></div></div>
-      <div class="faq">
-        <details><summary>Are these for human use?</summary><p>All vials are sold for research use only (RUO). They are not FDA-approved drugs and are not intended to diagnose, treat, or cure anything.</p></details>
-        <details><summary>How fast do orders ship?</summary><p>Dispatched within 24 hours on business days, blind-packed with cold-safe lyophilized powder. Tracking emailed the moment it leaves.</p></details>
-        <details><summary>Where do the COAs come from?</summary><p>Independent third-party labs. Every batch gets HPLC purity + mass-spec identity, and the report is matched to your vial's lot number. Tap verify on any product.</p></details>
-        <details><summary>What's the price-match guarantee?</summary><p>Find the same compound, same mg, lower verified price from a COA-backed vendor — send it and we beat it by $5.</p></details>
-        <details><summary>How does Bare Club work?</summary><p>Recurring membership, 15% off every order, price-locked while active. Skip or cancel anytime. Annual prepay unlocks 25%.</p></details>
-        <details><summary>How do I pay?</summary><p>Card, Apple/Google Pay, and crypto. High-risk-friendly gateways so peptide orders never get declined.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-band">
-    <div class="wrap">
-      <h2>Stop overpaying for vials.</h2>
-      <p>Verified purity, 24-hour dispatch, and the bare price. Start with one and see the COA for yourself.</p>
-      <a class="btn btn-accent" href="#catalog">Shop now</a>
     </div>
   </section>
 </main>
@@ -141,15 +139,12 @@
 <footer>
   <div class="wrap">
     <div class="foot-grid">
-      <div>
-        <a class="brand" href="#top" style="margin-bottom:12px"><img src="assets/logo.svg" alt="">BareVial</a>
-        <p style="max-width:34ch">Research-grade peptides at bare prices. COA on every batch. Ships 24h.</p>
-      </div>
-      <div><h4>Shop</h4><a href="#catalog">Catalog</a><a href="#stacks">Stacks</a><a href="#club">Bare Club</a></div>
+      <div><a class="wordmark" href="#top">BareVial<i>ruo</i></a><p>Verified research peptides at bare prices. COA on every batch, dispatched in 24 hours.</p></div>
+      <div><h4>Shop</h4><a href="#catalog">Catalog</a><a href="#stacks">Stacks</a><a href="#club">Membership</a></div>
       <div><h4>Info</h4><a href="#faq">FAQ</a><a href="#" onclick="openCoa('generic');return false">Sample COA</a><a href="#club">Price match</a></div>
     </div>
     <div class="ruo"><b>Research Use Only.</b> All products are sold for laboratory research purposes only and are not intended for human or veterinary diagnostic or therapeutic use. Statements on this site have not been evaluated by the FDA.</div>
-    <div class="foot-bottom"><span>© 2026 BareVial. All rights reserved.</span><span>hello@barevial.co · Ships from US warehouses</span></div>
+    <div class="foot-bottom"><span>© 2026 BareVial</span><span>Dispatched from US warehouses · Research use only</span></div>
   </div>
 </footer>
 
@@ -160,8 +155,8 @@
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-foot">
       <div class="total"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
-      <p class="note">Shipping & taxes calculated at checkout. RUO. Free US shipping over $99.</p>
-      <button class="btn btn-accent btn-block" id="checkout">Checkout</button>
+      <p class="note">Shipping & taxes at checkout. RUO. Free US shipping over $99.</p>
+      <button class="btn btn-ink btn-block" id="checkout">Checkout</button>
     </div>
   </div>
 </div>
@@ -171,7 +166,7 @@
   <div class="box" id="modalBox"></div>
 </div>
 
-<div class="toast" id="toast">Added to cart</div>
+<div class="toast" id="toast">Added</div>
 
 <script src="app.js"></script>
 </body>
