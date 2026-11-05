@@ -2,9 +2,9 @@
 
 | Vendor | Channel | Status |
 |---|---|---|
-| PeptideDropship | form (#get-started) | SENT — auto-reply + $100-off activation, respond by Nov 15 |
+| PeptideDropship | form (#get-started) | APPLIED — replied: $100-off activation, complete by Nov 15. Model: partner tiers $397/$497/$697 per month + wholesale unit pricing, white-label, Shopify/API sync, processor intros. Next: await onboarding / reply asking for trial tier + API access |
 | Novatide USA | form (/contact) | SENT — "Thanks, we have got it." |
-| WholesaleBulkPeptides | email (form broken) | PENDING — sender outage |
+| WholesaleBulkPeptides | email (form broken) | PENDING — FormSubmit outage; draft ready below. Fallback: send from your own inbox |
 
 ## WBP email (ready to send to sales@wholesalebulkpeptides.com)
 
