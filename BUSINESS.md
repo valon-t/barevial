@@ -64,7 +64,7 @@ Refresh pinned price list · post 1 stack deal · reply-bomb any "where do I buy
 ---
 
 ## 4. Unlock checklist (human gates)
-1. Domain → point to GitHub Pages (or keep `valon-t.github.io/barevial`).
+1. Domain → point to GitHub Pages (or keep `barevial.surge.sh`).
 2. Supplier Trade Assurance accounts → place sample orders.
 3. X account → hand over API keys for autonomous posting.
 4. Stripe / high-risk gateway → live checkout.
