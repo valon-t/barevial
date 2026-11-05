@@ -26,7 +26,7 @@ const STACKS = [
   {id:"stack-glow", name:"Glow Protocol", desc:"Cosmetic research stack, bundled with bac water.", price:75, was:108, save:"31%", skus:["glow","bac-10"]}
 ];
 
-const money = n => "$" + n.toFixed(2);
+const money = n => "$" + (Number.isInteger(n) ? n : n.toFixed(2));
 let cart = JSON.parse(localStorage.getItem("bv_cart") || "[]");
 
 function card(p) {

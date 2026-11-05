@@ -7,7 +7,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;font-feature-settings:"kern" 1,"liga" 1;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
 img{display:block;width:100%;height:100%;object-fit:cover}
 ::selection{background:var(--ink);color:var(--bone)}
@@ -40,9 +40,9 @@ header.nav{position:sticky;top:0;z-index:60;background:rgba(243,238,228,.86);bac
 .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
 .hero .kicker{display:inline-flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-bottom:26px}
 .hero .kicker::before{content:"";width:26px;height:1px;background:var(--rust)}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,6.6vw,88px);line-height:.95;letter-spacing:-.02em}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,6.4vw,82px);line-height:1.02;letter-spacing:-.02em;text-wrap:balance}
 h1 em{font-style:normal;color:var(--rust)}
-.hero p.lede{color:var(--soft);font-size:16.5px;max-width:40ch;margin:26px 0 32px}
+.hero p.lede{color:var(--soft);font-size:16.5px;max-width:42ch;margin:26px 0 32px;text-wrap:pretty}
 .hero-cta{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .hero-meta{display:flex;gap:26px;margin-top:42px;font-size:12px;color:var(--soft);border-top:1px solid var(--line);padding-top:16px;max-width:420px}
 .hero-meta b{color:var(--ink);font-weight:600}
@@ -56,25 +56,25 @@ h1 em{font-style:normal;color:var(--rust)}
 
 /* marquee stat band */
 .band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper)}
-.band .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:26px 28px}
+.band .wrap{display:grid;grid-template-columns:repeat(4,1fr);align-items:baseline;gap:20px;padding:26px 28px}
 .band .s{text-align:left}
 .band .s b{font-family:var(--serif);font-size:30px;display:block;line-height:1}
 .band .s span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
 
 section{padding:88px 0}
 .sec-head{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:end;margin-bottom:44px;border-bottom:1px solid var(--line);padding-bottom:26px}
-.sec-head h2{font-family:var(--serif);font-size:clamp(32px,4.4vw,54px);line-height:1;letter-spacing:-.02em}
+.sec-head h2{font-family:var(--serif);font-size:clamp(32px,4.4vw,54px);line-height:1.05;letter-spacing:-.02em;text-wrap:balance}
 .sec-head h2 em{font-style:normal;color:var(--rust)}
 .sec-head p{color:var(--soft);font-size:14px;max-width:38ch;justify-self:end;align-self:end}
 
 /* catalog — typographic cards, no photos */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));grid-auto-rows:1fr;gap:14px}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px 20px;display:flex;flex-direction:column;transition:border-color .2s, transform .2s}
 .card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .card .chead{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .card .cat{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 .save{font-size:11px;font-weight:600;color:var(--rust)}
-.card h3{font-family:var(--serif);font-size:26px;line-height:1.05;letter-spacing:-.01em;margin-bottom:6px}
+.card h3{font-family:var(--serif);font-size:26px;line-height:1.1;letter-spacing:-.01em;margin-bottom:6px;text-wrap:balance}
 .card .mg{font-size:12.5px;color:var(--soft);margin-bottom:2px}
 .card .spec{font-size:11.5px;color:var(--faint)}
 .card .coa{border-bottom:1px solid var(--line2);cursor:pointer;color:var(--soft)}
@@ -89,12 +89,14 @@ section{padding:88px 0}
 .stacks{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stack-list{border-top:1px solid var(--line)}
 .stack-row{display:grid;grid-template-columns:64px 1fr auto auto;gap:24px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
+.stack-row .n{line-height:1.1}
+.stack-row .pr{display:flex;justify-content:flex-end;align-items:baseline;gap:10px}
 .stack-row .n{font-family:var(--serif);font-size:20px;color:var(--faint)}
 .stack-row h3{font-family:var(--serif);font-size:24px;line-height:1.1}
 .stack-row .it{font-size:12.5px;color:var(--soft);margin-top:3px}
 .stack-row .pr{text-align:right}
-.stack-row .pr b{font-size:17px;display:block}
-.stack-row .pr s{font-size:12px;color:var(--faint)}
+.stack-row .pr b{font-size:18px}
+.stack-row .pr s{font-size:12px;color:var(--faint);text-decoration:none;position:relative;top:-1px}
 .stack-row .pr .save{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);font-weight:600}
 
 /* club */
@@ -109,7 +111,7 @@ section{padding:88px 0}
 /* reviews */
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .review{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column}
-.review .qu{font-family:var(--serif);font-size:22px;line-height:1.35;letter-spacing:-.01em}
+.review .qu{font-family:var(--serif);font-size:22px;line-height:1.4;letter-spacing:-.01em;text-wrap:pretty}
 .review .who{display:flex;align-items:center;gap:11px;margin-top:auto;padding-top:18px}
 .review .ava{width:36px;height:36px;border-radius:99px;background:var(--ink);color:var(--bone);display:grid;place-items:center;font-size:11px;font-weight:600;letter-spacing:.05em;flex:none}
 .review .who b{font-size:12.5px;display:block}
