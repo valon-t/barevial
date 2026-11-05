@@ -1,28 +1,33 @@
 # BareVial — Sourcing & Launch Playbook
 
-## 1. Vendor sourcing (run in this order)
+## 1. Vendors (verified — apply in this order)
 
-**Target landed cost:** $6–14/vial on hero SKUs. Walk away above $16.
+All three are US-warehouse, RUO, dropship + white-label + batch-COA. Start with #1; it also brokers high-risk payment processors, which solves the hardest gate.
 
-### Where to look
-- Alibaba → search `peptide`, filter **Verified Supplier + Trade Assurance**, sort by orders. Message 20, keep the 5 that answer in <24h.
-- Made-in-China → cross-check the same company names for pricing.
-- US warehouses / domestic wholesale for hero SKUs only (faster ship, higher cost).
+**1) PeptideDropship — peptidedropship.com** (best fit)
+- 0 MOQ · California · same-day blind ship · white-label · Shopify/Woo/API sync
+- Explicitly introduces approved high-risk payment processors on onboarding
+- Step: "Get Started Free" → business verification → request catalog + sample COA
 
-### Vetting checklist (reject on any miss)
-- [ ] Trade Assurance active, 3+ yrs, response rate >90%
-- [ ] Will **blind-ship** (no supplier name on pack)
-- [ ] Will **private-label** vials/boxes with BareVial art
-- [ ] Has **US warehouse** + dropship API or daily CSV/email feed
-- [ ] Sends **batch COA** (HPLC + LC-MS) per lot, lot number matches vial
-- [ ] Sample order arrives — verify purity + label quality before first buy
-- [ ] Two suppliers confirmed per hero SKU (no single point of failure)
+**2) Novatide USA — novatideusa.com/wholesale**
+- US wholesale, dropship under your brand, white + private label, COA per batch
+- Step: "Request pricing" form → ask for sample COA before opening an account
 
-### Outreach message (paste, tweak name)
-> Hi — I run a peptide storefront doing dropship at volume. Need: US-warehouse dropship, blind ship, private-label vials (my artwork), batch COA per order. First order 50 vials across 5 SKUs, monthly reorder. Can you do white-label + dropship and send your price list + a sample COA?
+**3) WholesaleBulkPeptides — wholesalebulkpeptides.com**
+- MOQ 10 · tier pricing (10→10k) · blind dropship · public COA library · approval in 1 business day
+- Step: "Apply for Wholesale Account" → request sample pack
 
-### Red flags
-No COA, MOQ 100+, no US stock, vague purity claims, invoice-only (no Trade Assurance).
+### Outreach message (paste)
+> Hi — launching a research-peptide storefront (RUO), white-label + dropship on Shopify-compatible flow. Need your wholesale price list, sample COA, US-warehouse dropship terms and blind-ship confirmation. Starting with a sample pack, then monthly volume.
+
+### Vetting (reject on any miss)
+Trade Assurance/US entity · US warehouse · blind ship · white-label · batch COA per lot with lot numbers · sample arrives on time. **Two suppliers per hero SKU.**
+
+## 1b. Payments
+Stripe and PayPal routinely restrict peptide sellers. Do not rely on them as primary.
+- Ask PeptideDropship for their processor intros first.
+- Backup stack: NMI or Authorize.Net high-risk merchant account + Coinbase Commerce (crypto).
+- KYC is yours; integration is ours once approved.
 
 ---
 
