@@ -200,3 +200,5 @@ footer{padding:60px 0 34px;border-top:1px solid var(--line)}
   .cta{aspect-ratio:4/5}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.card h3 a{color:inherit;text-decoration:none;background-image:linear-gradient(var(--line2),var(--line2));background-size:100% 1px;background-position:0 100%;background-repeat:no-repeat}
+.card h3 a:hover{color:var(--rust);background-color:transparent}

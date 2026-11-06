@@ -33,7 +33,7 @@ function card(p) {
   const save = Math.round((1 - p.price / p.was) * 100);
   return `<article class="card">
     <div class="chead"><span class="cat">${p.cat}</span><span class="save">−${save}%</span></div>
-    <h3>${p.name}</h3>
+    <h3><a href="peptide.html?p=${p.id}">${p.name}</a></h3>
     <div class="mg">${p.mg} vial · lyophilized powder</div>
     <div class="spec">${p.purity} pure · batch ${p.batch} <span class="coa" onclick="openCoa('${p.id}')">verify</span></div>
     <div class="cfoot">
@@ -53,8 +53,8 @@ function stackRow(s, i) {
   </div>`;
 }
 
-document.getElementById("productGrid").innerHTML = PRODUCTS.map(card).join("");
-document.getElementById("stackList").innerHTML = STACKS.map(stackRow).join("");
+const gridEl = document.getElementById("productGrid"); if (gridEl) gridEl.innerHTML = PRODUCTS.map(card).join("");
+const stackEl = document.getElementById("stackList"); if (stackEl) stackEl.innerHTML = STACKS.map(stackRow).join("");
 
 function toast(m){ const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove("show"), 1600); }
 
@@ -107,3 +107,144 @@ function openModal(html){ document.getElementById("modalBox").innerHTML = html; 
 function closeModal(){ document.getElementById("modal").classList.remove("open"); }
 
 render();
+
+/* ---------- peptide library content ---------- */
+const INFO = {
+  "reta-10": {
+    plain:"Three metabolic pathways in one molecule — the most-watched research compound in the category.",
+    what:"Retatrutide is a single 39-amino-acid peptide that acts as a triple agonist at the GIP, GLP-1 and glucagon receptors. In published human trials it produced the largest average weight changes of any incretin studied to date, and it remains investigational — no regulatory approval anywhere.",
+    human:"Think of it as the successor to Ozempic-era compounds: it engages three appetite-and-energy pathways instead of one or two. Researchers study it for appetite regulation, energy expenditure and blood-sugar markers. Because it is not approved yet, supply is entirely grey-market — which is exactly why prices vary wildly between vendors.",
+    may:["Appetite-regulation research","Energy-expenditure studies","Fasting-glucose and A1c marker work","Body-composition protocols"],
+    dose:"Studied with slow escalation, typically starting at 1–2 mg weekly.",
+    stacks:["bac-10","tirz-10"]},
+  "tirz-10": {
+    plain:"The dual agonist your doctor already knows — approved in humans, studied relentlessly.",
+    what:"Tirzepatide is a 39-amino-acid dual GIP and GLP-1 receptor agonist, approved as a medicine (Mounjaro/Zepbound) and backed by the SURPASS and SURMOUNT trial programs.",
+    human:"It hits two incretin pathways at once, which is why its trial results outperformed single-pathway compounds. Most buyers know it by brand name; the research-grade vial is simply the same molecule without the pharmacy markup.",
+    may:["Weight-management research","Glycemic-control studies","Lipid-marker work","Appetite signaling"],
+    dose:"Studied from 2.5 mg weekly with slow titration.",
+    stacks:["bac-10","reta-10"]},
+  "sema-5": {
+    plain:"The original GLP-1 headline-maker — one pathway, decades of data.",
+    what:"Semaglutide is a long-acting GLP-1 receptor agonist (Ozempic/Wegovy) with an extensive published record in glycemic control and weight management.",
+    human:"The compound that made GLP-1s a household phrase. One pathway, very well characterized — often the reference point researchers compare newer agonists against.",
+    may:["Appetite regulation","Glycemic markers","Cardiometabolic research","Gastric-emptying studies"],
+    dose:"Studied from 0.25 mg weekly with gradual titration.",
+    stacks:["bac-10"]},
+  "bpc-5": {
+    plain:"The classic repair peptide — tendons, gut lining, and everything connective.",
+    what:"BPC-157 is a synthetic 15-amino-acid fragment of a gastric protein. Animal literature documents accelerated tendon-to-bone healing, fibroblast migration and angiogenesis, plus protective effects on gut lining.",
+    human:"If there is a household name in repair research, this is it. The running theory: it promotes new blood-vessel growth and cell migration to injured tissue, which is why it shows up in almost every recovery protocol — joints, gut, soft tissue.",
+    may:["Tendon and ligament-repair studies","Gut-lining protection research","Angiogenesis models","Post-injury recovery protocols"],
+    dose:"Commonly studied at 200–500 mcg/day, local or systemic.",
+    stacks:["tb-5","bac-10"]},
+  "tb-5": {
+    plain:"The cell-migration peptide — pairs with BPC-157 in nearly every repair stack.",
+    what:"TB-500 is a synthetic fragment of Thymosin Beta-4, an actin-binding protein central to cell migration and tissue remodeling. Animal models show improved wound healing and reduced inflammation.",
+    human:"Where BPC-157 recruits repair machinery to tissue, TB-500 helps cells actually move and rebuild. They complement each other so well that the combination got its own nickname.",
+    may:["Wound-healing studies","Tissue-remodeling research","Inflammation-marker work","Hair and skin-repair models"],
+    dose:"Commonly studied at 2–5 mg twice weekly.",
+    stacks:["bpc-5","bac-10"]},
+  "wolv": {
+    plain:"BPC-157 + TB-500 — the combination the community named for itself.",
+    what:"A pre-blended ratio of BPC-157 and TB-500, the two most-researched repair peptides, in one vial.",
+    human:"The classic repair pairing in a single vial: one recruits repair cells, the other helps them rebuild. Blends exist because researchers kept mixing the same two anyway — we just saved them a step.",
+    may:["Full-body repair protocols","Joint and soft-tissue studies","Recovery-window research"],
+    dose:"Commonly studied at 0.5–1 ml daily from a reconstituted blend.",
+    stacks:["ghk-50","bac-10"]},
+  "ghk-50": {
+    plain:"The copper peptide — skin, collagen, and gene-expression research staple.",
+    what:"GHK-Cu is a natural copper-binding tripeptide. Human studies show it modulates the expression of a large fraction of human genes in fibroblasts, with documented effects on collagen, elastin and wound repair.",
+    human:"The skincare-industry darling that earned it: GHK-Cu is one of very few compounds shown in human fibroblast studies to shift hundreds of genes toward a younger expression pattern. Studied topically and systemically.",
+    may:["Collagen and elastin research","Wound-repair studies","Skin-remodeling protocols","Hair-follicle models"],
+    dose:"Commonly studied at 1–2 mg/day systemic; topical at 0.5–2%.",
+    stacks:["glow","bpc-5"]},
+  "glow": {
+    plain:"GHK-Cu, BPC-157 and TB-500 — the cosmetic-research trifecta.",
+    what:"A blend combining the copper peptide GHK-Cu with the repair pair BPC-157/TB-500.",
+    human:"Skin quality, repair and recovery addressed from three angles in one vial — the blend behind most 'glow' protocols in the community.",
+    may:["Skin-quality research","Collagen-remodeling studies","Recovery protocols"],
+    dose:"Commonly studied at 0.5–1 ml daily, reconstituted.",
+    stacks:["ghk-50","bac-10"]},
+  "klow": {
+    plain:"GHK-Cu, KPV, BPC-157, TB-500 — the full cosmetic-plus-repair stack.",
+    what:"A four-compound blend: GHK-Cu (copper peptide), KPV (an anti-inflammatory tripeptide fragment of alpha-MSH), plus BPC-157 and TB-500.",
+    human:"The everything blend: GHK-Cu for skin remodeling, KPV for calming inflammatory signaling, and the repair pair underneath. The one vial people reach for when they want the whole protocol at once.",
+    may:["Inflammatory-skin research","Repair and recovery studies","Cosmetic-remodeling protocols"],
+    dose:"Commonly studied at 0.5–1 ml daily, reconstituted.",
+    stacks:["glow","bpc-5"]},
+  "mots-10": {
+    plain:"The mitochondrial peptide — studied as an 'exercise in a vial' signal.",
+    what:"MOTS-c is a mitochondrial-derived peptide of 16 amino acids that activates AMPK pathways and regulates metabolic homeostasis. Animal studies show exercise-mimetic effects on muscle and glucose handling.",
+    human:"Encoded not in the nucleus but in the mitochondria itself — a genuine oddity. Research focuses on whether it can reproduce some of exercise's metabolic signaling, which is why endurance and longevity researchers watch it closely.",
+    may:["Mitochondrial-function research","Glucose-metabolism studies","Endurance-model protocols","Longevity research"],
+    dose:"Commonly studied at 5–10 mg, 2–3x weekly.",
+    stacks:["slu-5","epi-10"]},
+  "aod-5": {
+    plain:"The fat-metabolism fragment — growth hormone's lipolytic slice, nothing else.",
+    what:"AOD-9604 is a fragment of human growth hormone (hGH 177–191) that retains lipolytic and anti-lipogenic activity without the growth or insulin-like effects of full GH.",
+    human:"Researchers isolated the one part of growth hormone that signals fat cells to release stores — and nothing else. Studied for body composition without the GH side-effect profile.",
+    may:["Lipolysis research","Body-composition studies","Metabolic-rate protocols"],
+    dose:"Commonly studied at 250–500 mcg daily.",
+    stacks:["5a1mq-50","bac-10"]},
+  "5a1mq-50": {
+    plain:"The NNMT inhibitor — studied for fat-cell metabolism at the enzyme level.",
+    what:"5-Amino-1MQ is a small-molecule inhibitor of nicotinamide N-methyltransferase (NNMT), an enzyme highly active in white fat tissue. Inhibiting it raises intracellular NAD+ and SAM in adipocytes, which animal studies link to reduced fat-cell size.",
+    human:"It works on the enzyme that keeps white fat cells storing rather than burning. Not a peptide in the strict sense, but a fixture of metabolic-research stacks for exactly that reason.",
+    may:["Adipocyte-metabolism research","NAD+ pathway studies","Body-composition protocols"],
+    dose:"Commonly studied at 50–100 mg daily, oral or injectable routes.",
+    stacks:["aod-5","slu-5"]},
+  "slu-5": {
+    plain:"The newest exercise-mimetic — ERR agonist research, barely out of the lab.",
+    what:"SLU-PP-332 is a small-molecule agonist of estrogen-related receptors (ERRα/β/γ) that mimics the transcriptional effects of endurance exercise. Early animal data shows increased energy expenditure and improved fitness markers.",
+    human:"The 'we just discovered this one' compound — it flips on the gene programs endurance exercise turns on. Very new, very scarce, and the reason it keeps selling out in research circles.",
+    may:["Exercise-mimetic studies","Mitochondrial-biogenesis research","Metabolic-rate protocols"],
+    dose:"Emerging research; early protocols at low daily doses.",
+    stacks:["mots-10","5a1mq-50"]},
+  "epi-10": {
+    plain:"The pineal tetrapeptide — telomere and longevity research's quiet icon.",
+    what:"Epitalon (Ala-Glu-Asp-Gly) is a synthetic tetrapeptide modeled on epithalamin, a pineal-gland extract. Studies in cell cultures and animals report telomerase activation in somatic cells and melatonin-regulation effects.",
+    human:"The longevity compound people cite when they talk about telomeres — the caps on DNA that shorten with age. Research claims are early-stage, but its place in longevity protocols is firmly established.",
+    may:["Telomerase-activation research","Melatonin-regulation studies","Longevity protocols","Pineal-function research"],
+    dose:"Commonly studied at 5–10 mg/day for 10–20 day courses.",
+    stacks:["mots-10","epi-10"]},
+  "selank-10": {
+    plain:"The calm-focus peptide — anxiolytic research without sedation.",
+    what:"Selank is a heptapeptide analog of the human immunoglobulin tuftsin fragment, developed in Russia. Research documents anxiolytic effects alongside BDNF and serotonin-system modulation, without sedation or dependence findings.",
+    human:"Studied for steadying mood and sharpening attention at the same time — the combination that made it a nootropic-community staple. Russian clinical use is extensive; Western research is catching up.",
+    may:["Anxiety-model research","Attention and focus studies","BDNF-expression work","Immune-modulation research"],
+    dose:"Commonly studied at 200–900 mcg intranasally, daily or as needed.",
+    stacks:["semax-10"]},
+  "semax-10": {
+    plain:"Selank's sharper sibling — studied for focus and cognitive drive.",
+    what:"Semax is a heptapeptide analog of ACTH(4–10). Russian research documents nootropic and neuroprotective effects, including BDNF upregulation and dopaminergic/serotonergic modulation.",
+    human:"Where Selank calms, Semax drives — studied for concentration, mental stamina and cognitive resilience. The two are often researched side by side.",
+    may:["Focus and attention research","BDNF-expression studies","Neuroprotection models","Stroke-recovery research (RU)"],
+    dose:"Commonly studied at 0.1–1 mg intranasally, daily.",
+    stacks:["selank-10"]},
+  "cjc-ipa": {
+    plain:"The GH-pulse pair — signal, don't replace.",
+    what:"A blend of CJC-1295 (a GHRH analog) and Ipamorelin (a selective ghrelin mimetic), studied together for pulsatile growth-hormone release without cortisol or prolactin elevation.",
+    human:"Two peptides, one goal: prompt the pituitary to release growth hormone in natural pulses rather than flooding the system. The classic 'heal and recover' pairing for body-composition and recovery research.",
+    may:["Growth-hormone-pulse research","Body-composition studies","Recovery and sleep-quality research"],
+    dose:"Commonly studied at 100–200 mcg each, 1–2x daily.",
+    stacks:["tesa-10","bac-10"]},
+  "tesa-10": {
+    plain:"The visceral-fat GHRH analog — human-approved for a niche, studied widely beyond it.",
+    what:"Tesamorelin is a stabilized GHRH analog approved (as Egrifta) for HIV-associated lipodystrophy. Research documents reductions in visceral adipose tissue via growth-hormone signaling.",
+    human:"The most human-data-backed compound in the GH category. Studied primarily for visceral (deep abdominal) fat, which is the metabolically active kind.",
+    may:["Visceral-fat research","Body-composition studies","GH-axis research"],
+    dose:"Commonly studied at 1–2 mg daily.",
+    stacks:["cjc-ipa","bac-10"]},
+  "bac-10": {
+    plain:"Bacteriostatic water — the solvent every vial needs.",
+    what:"Sterile water with 0.9% benzyl alcohol, which inhibits bacterial growth after the vial is punctured, allowing multi-use draws.",
+    human:"Not exciting, strictly necessary. Lyophilized peptides are powder; this is what turns them into a researchable solution. One 10 ml vial handles a full research cycle.",
+    may:["Reconstitution for all injectable research"],
+    dose:"Use per protocol; discard 28 days after first puncture.",
+    stacks:[]}
+};
+
+/* ---------- detail + library rendering ---------- */
+function findProduct(id){ return PRODUCTS.find(p => p.id === id); }
+const CATEGORY_ORDER = ["Metabolic","Recovery","Skin / Repairs","Cosmetic","Cognitive","Longevity","Growth","Supply"];

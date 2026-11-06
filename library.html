@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Peptide Library — BareVial</title>
+<meta name="description" content="Every compound we stock, explained twice: the science, and what it could actually help with. Research use only.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://barevial.surge.sh/library.html">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=6">
+<style>
+.lib{max-width:1080px;margin:0 auto;padding:56px 0 90px}
+.lib-intro{padding-bottom:36px;border-bottom:1px solid var(--line)}
+.lib-intro .label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);display:block;margin-bottom:14px}
+.lib-intro h1{font-family:var(--serif);font-size:clamp(40px,5.6vw,72px);line-height:1;letter-spacing:-.02em;margin-bottom:14px}
+.lib-intro h1 em{font-style:normal;color:var(--rust)}
+.lib-intro p{color:var(--soft);font-size:15.5px;max-width:52ch;text-wrap:pretty}
+.catnav{display:flex;gap:18px;flex-wrap:wrap;padding:18px 0;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.catnav a{color:var(--soft)}
+.catnav a:hover{color:var(--ink)}
+.lib-sec{padding:44px 0 20px}
+.lib-sec h2{font-family:var(--serif);font-size:26px;letter-spacing:-.01em;margin-bottom:6px}
+.lib-sec .sub{font-size:12.5px;color:var(--faint);margin-bottom:22px;display:block}
+.entries{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));grid-auto-rows:1fr;gap:14px}
+.entry{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;transition:.2s}
+.entry:hover{border-color:var(--ink);transform:translateY(-2px)}
+.entry .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.entry h3{font-family:var(--serif);font-size:22px;letter-spacing:-.01em}
+.entry .mg{font-size:11px;color:var(--faint);white-space:nowrap}
+.entry .plain{font-size:13.5px;line-height:1.5;margin:12px 0 14px;color:var(--ink);text-wrap:pretty}
+.entry .sci{font-size:12px;line-height:1.55;color:var(--soft);margin-bottom:16px;text-wrap:pretty}
+.entry .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--line)}
+.entry .more{font-size:12px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--ink)}
+.entry .more:hover{color:var(--rust);border-color:var(--rust)}
+.entry .pr{font-size:13px;font-weight:600}
+.note{font-size:11.5px;color:var(--faint);max-width:70ch;margin-top:40px;padding-top:18px;border-top:1px solid var(--line)}
+@media(max-width:600px){.entries{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="wordmark" href="/barevial/">BareVial<i>ruo</i></a>
+    <nav class="nav-links">
+      <a href="/barevial/">Shop</a>
+      <a href="library.html">Library</a>
+      <a href="/barevial/#club">Membership</a>
+      <a href="/barevial/#faq">FAQ</a>
+    </nav>
+    <button class="cart-btn" id="cartOpen" aria-label="Cart">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.4 9H7.2z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6 5 3H2"/></svg>
+      <span class="badge" id="badge" hidden>0</span>
+    </button>
+  </div>
+</header>
+
+<main><div class="wrap"><div class="lib" id="lib"></div></div></main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom"><span>© 2026 BareVial</span><span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="ruo.html">RUO policy</a></span></div>
+  </div>
+</footer>
+
+<div class="drawer" id="drawer">
+  <div class="scrim" data-close></div>
+  <div class="panel">
+    <div class="panel-head"><h3>Your cart</h3><button class="x" data-close>×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot">
+      <div class="total"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+      <p class="note">Shipping &amp; taxes at checkout. RUO. Free US shipping over $99.</p>
+      <button class="btn btn-ink btn-block" id="checkout">Checkout</button>
+    </div>
+  </div>
+</div>
+<div class="modal" id="modal"><div class="scrim" data-close></div><div class="box" id="modalBox"></div></div>
+<div class="toast" id="toast">Added</div>
+<script src="app.js"></script>
+<script>
+(function(){
+  const catSub = {
+    "Metabolic":"Appetite, glucose handling, energy expenditure and body composition.",
+    "Recovery":"Tissue repair, inflammation and the classic healing protocols.",
+    "Skin / Repairs":"Copper peptides and collagen-remodeling research.",
+    "Cosmetic":"The pre-blended skin and repair protocols.",
+    "Cognitive":"Mood, focus and neurotrophic-factor research.",
+    "Longevity":"Telomeres, mitochondria and the aging-clock compounds.",
+    "Growth":"Growth-hormone axis and body-composition research.",
+    "Supply":"What every reconstitution needs."
+  };
+  const cats = [...new Set(PRODUCTS.map(p=>p.cat))].sort((a,b)=>CATEGORY_ORDER.indexOf(a)-CATEGORY_ORDER.indexOf(b));
+  const nav = cats.map(c=>`<a href="#c-${c.replace(/\W+/g,"")}">${c}</a>`).join("");
+  const secs = cats.map(c=>{
+    const items = PRODUCTS.filter(p=>p.cat===c && INFO[p.id]).map(p=>`
+      <article class="entry">
+        <div class="top"><h3>${p.name}</h3><span class="mg">${p.mg}</span></div>
+        <p class="plain">${INFO[p.id].plain}</p>
+        <p class="sci">${INFO[p.id].what}</p>
+        <div class="foot"><a class="more" href="peptide.html?p=${p.id}">Read the full breakdown</a><span class="pr">${money(p.price)}</span></div>
+      </article>`).join("");
+    return `<section class="lib-sec" id="c-${c.replace(/\W+/g,"")}"><h2>${c}</h2><span class="sub">${catSub[c]||""}</span><div class="entries">${items}</div></section>`;
+  }).join("");
+  document.getElementById("lib").innerHTML = `
+    <div class="lib-intro">
+      <span class="label">The library</span>
+      <h1>Every compound, <em>explained twice.</em></h1>
+      <p>The science first — mechanism, lineage, what the trials actually showed. Then the same thing in plain language: what it could help with, and why people care. All of it research use only.</p>
+    </div>
+    <nav class="catnav">${nav}</nav>
+    ${secs}
+    <p class="note">For laboratory research use only. Not for human or veterinary use. Descriptions summarize published research and community practice; they are not medical advice and have not been evaluated by the FDA.</p>`;
+  document.getElementById("cartOpen").onclick = openDrawer;
+})();
+</script>
+</body>
+</html>

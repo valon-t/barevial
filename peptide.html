@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title id="metaTitle">BareVial — Peptide library</title>
+<meta name="description" content="Research-grade peptides, explained. The science and the plain-English read, side by side.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://barevial.surge.sh/">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=6">
+<style>
+.pep{max-width:1080px;margin:0 auto;padding:56px 0 90px}
+.crumb{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);display:inline-flex;gap:8px;margin-bottom:30px}
+.crumb:hover{color:var(--ink)}
+.pep-head{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start;padding-bottom:44px;border-bottom:1px solid var(--line)}
+.pep-head .cat{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-bottom:14px;display:block}
+.pep-head h1{font-family:var(--serif);font-size:clamp(40px,5.4vw,68px);line-height:.98;letter-spacing:-.02em;margin-bottom:8px}
+.pep-head .mg{font-size:14px;color:var(--soft);margin-bottom:20px}
+.pep-head .plain{font-family:var(--serif);font-size:22px;line-height:1.4;color:var(--ink);max-width:38ch;text-wrap:pretty}
+.buy{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;position:sticky;top:96px}
+.buy .price{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.buy .price b{font-family:var(--serif);font-weight:400;font-size:36px}
+.buy .price s{color:var(--faint);font-size:14px}
+.buy .save{font-size:11px;font-weight:600;color:var(--rust);display:block;margin-bottom:18px}
+.buy ul{list-style:none;display:grid;gap:9px;font-size:12.5px;color:var(--soft);margin-bottom:20px;padding-top:16px;border-top:1px solid var(--line)}
+.buy ul li::before{content:"—";color:var(--faint);margin-right:8px}
+.sec{padding:44px 0;border-bottom:1px solid var(--line)}
+.sec:last-of-type{border-bottom:none}
+.sec .label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-bottom:14px;display:block}
+.sec h2{font-family:var(--serif);font-size:clamp(26px,3.2vw,36px);line-height:1.1;letter-spacing:-.01em;margin-bottom:16px}
+.sec p{font-size:15px;color:var(--soft);max-width:62ch;text-wrap:pretty}
+.human{border-left:2px solid var(--rust);padding-left:24px}
+.human p{font-family:var(--serif);font-size:21px;line-height:1.5;color:var(--ink);max-width:52ch}
+.may{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.may div{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}
+.may div::before{content:"→";color:var(--rust);flex:none}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{border:1px solid var(--line2);border-radius:99px;padding:9px 16px;font-size:13px;transition:.2s}
+.chip:hover{border-color:var(--ink);background:var(--paper)}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:10px}
+.meta-grid div{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--paper)}
+.meta-grid b{font-size:12px;display:block;margin-bottom:4px}
+.meta-grid span{font-size:12.5px;color:var(--soft)}
+.note{font-size:11.5px;color:var(--faint);max-width:70ch;margin-top:34px;padding-top:18px;border-top:1px solid var(--line)}
+@media(max-width:860px){.pep-head{grid-template-columns:1fr;gap:30px}.buy{position:static}.may{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="wordmark" href="/barevial/">BareVial<i>ruo</i></a>
+    <nav class="nav-links">
+      <a href="/barevial/">Shop</a>
+      <a href="library.html">Library</a>
+      <a href="/barevial/#club">Membership</a>
+      <a href="/barevial/#faq">FAQ</a>
+    </nav>
+    <button class="cart-btn" id="cartOpen" aria-label="Cart">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.4 9H7.2z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6 5 3H2"/></svg>
+      <span class="badge" id="badge" hidden>0</span>
+    </button>
+  </div>
+</header>
+
+<main><div class="wrap"><div class="pep" id="pep"></div></div></main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom"><span>© 2026 BareVial</span><span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="ruo.html">RUO policy</a></span></div>
+  </div>
+</footer>
+
+<div class="drawer" id="drawer">
+  <div class="scrim" data-close></div>
+  <div class="panel">
+    <div class="panel-head"><h3>Your cart</h3><button class="x" data-close>×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot">
+      <div class="total"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+      <p class="note">Shipping &amp; taxes at checkout. RUO. Free US shipping over $99.</p>
+      <button class="btn btn-ink btn-block" id="checkout">Checkout</button>
+    </div>
+  </div>
+</div>
+<div class="modal" id="modal"><div class="scrim" data-close></div><div class="box" id="modalBox"></div></div>
+<div class="toast" id="toast">Added</div>
+<script src="app.js"></script>
+<script>
+(function(){
+  const id = new URLSearchParams(location.search).get("p") || "reta-10";
+  const p = findProduct(id), info = INFO[id];
+  if(!p){ document.getElementById("pep").innerHTML = '<a class="crumb" href="library.html">← Back to library</a><h1 class="serif" style="font-size:44px">Not found.</h1>'; return; }
+  document.title = p.name + " " + p.mg + " — BareVial";
+  const save = Math.round((1 - p.price/p.was)*100);
+  const stackHtml = (info.stacks||[]).map(sid=>{const s=findProduct(sid);return s?`<a class="chip" href="peptide.html?p=${s.id}">${s.name}</a>`:""}).join("");
+  document.getElementById("pep").innerHTML = `
+    <a class="crumb" href="library.html">← Peptide library</a>
+    <div class="pep-head">
+      <div>
+        <span class="cat">${p.cat} · Research use only</span>
+        <h1>${p.name}</h1>
+        <div class="mg">${p.mg} vial · lyophilized · ${p.purity} pure</div>
+        <p class="plain">${info.plain}</p>
+      </div>
+      <div class="buy">
+        <div class="price"><b>${money(p.price)}</b><s>${money(p.was)}</s></div>
+        <span class="save">−${save}% · price-match + $5</span>
+        <button class="btn btn-ink btn-block" onclick="add('${p.id}')">Add to cart</button>
+        <ul>
+          <li>Batch ${p.batch} — lot-matched COA</li>
+          <li>Dispatched within 24 hours</li>
+          <li>Lyophilized · ships ambient, store −20°C</li>
+          <li>Bacteriostatic water available</li>
+        </ul>
+        <button class="btn btn-line btn-block" onclick="openCoa('${p.id}')">Verify the batch → COA</button>
+      </div>
+    </div>
+    <div class="sec">
+      <span class="label">The science</span>
+      <h2>What it is</h2>
+      <p>${info.what}</p>
+    </div>
+    <div class="sec">
+      <span class="label">In plain terms</span>
+      <div class="human"><p>${info.human}</p></div>
+    </div>
+    <div class="sec">
+      <span class="label">Studied for</span>
+      <div class="may">${info.may.map(m=>`<div>${m}</div>`).join("")}</div>
+    </div>
+    <div class="sec">
+      <span class="label">In the lab</span>
+      <div class="meta-grid">
+        <div><b>Commonly studied at</b><span>${info.dose}</span></div>
+        <div><b>Form</b><span>Lyophilized powder · ${p.mg}</span></div>
+        <div><b>Verification</b><span>HPLC purity + LC-MS identity, batch ${p.batch}</span></div>
+      </div>
+    </div>
+    ${stackHtml ? `<div class="sec"><span class="label">Researched alongside</span><div class="chips">${stackHtml}</div></div>` : ""}
+    <p class="note">For laboratory research use only. Not for human or veterinary use. Nothing on this page is medical advice, and statements have not been evaluated by the FDA. Dosing lines reflect common research-practice ranges, not recommendations.</p>`;
+  render();
+  document.getElementById("cartOpen").onclick = openDrawer;
+})();
+</script>
+</body>
+</html>
