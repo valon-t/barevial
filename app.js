@@ -1,4 +1,5 @@
 const PRODUCTS = [
+  {id:"cbl-514", name:"CBL-514", mg:"20 mg", cat:"Metabolic", price:74, was:149, purity:"99.1%", batch:"RV-CBL-2607", flag:"Headline"},
   {id:"reta-10", name:"Retatrutide", mg:"10 mg", cat:"Metabolic", price:34, was:79, purity:"99.4%", batch:"RV-R10-2604", flag:"Best seller"},
   {id:"tirz-10", name:"Tirzepatide", mg:"10 mg", cat:"Metabolic", price:39, was:89, purity:"99.6%", batch:"RV-T10-2603", flag:"High demand"},
   {id:"sema-5", name:"Semaglutide", mg:"5 mg", cat:"Metabolic", price:29, was:64, purity:"99.5%", batch:"RV-S05-2602"},
@@ -110,6 +111,13 @@ render();
 
 /* ---------- peptide library content ---------- */
 const INFO = {
+  "cbl-514": {
+    plain:"The injection that kills fat cells where it lands — the most hyped compound in the category right now.",
+    what:"CBL-514 is an investigational small-molecule injection (a DYRK1B inhibitor) that triggers apoptosis — programmed cell death — in subcutaneous adipocytes at the injection site. It is in Phase 3 trials for abdominal fat, cellulite and Dercum's disease, and is not yet approved anywhere.",
+    human:"Different from every GLP-1 on this site: those change appetite, this one destroys fat cells locally and they do not come back. One injection site at a time, no systemic appetite effect. It is the compound people are flying to trials for — and the reason it keeps selling out in research circles.",
+    may:["Local subcutaneous fat reduction","Adipocyte-apoptosis research","Cellulite and Dercum's models","Body-contouring protocols"],
+    dose:"Trial protocols use per-site injections; research use varies by protocol.",
+    stacks:["aod-5","5a1mq-50"]},
   "reta-10": {
     plain:"Three metabolic pathways in one molecule — the most-watched research compound in the category.",
     what:"Retatrutide is a single 39-amino-acid peptide that acts as a triple agonist at the GIP, GLP-1 and glucagon receptors. In published human trials it produced the largest average weight changes of any incretin studied to date, and it remains investigational — no regulatory approval anywhere.",

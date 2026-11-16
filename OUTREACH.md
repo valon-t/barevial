@@ -14,3 +14,7 @@ Hi — launching a research-peptide storefront (BareVial, RUO). We drop-ship and
 
 Storefront: https://barevial.surge.sh/
 Reply to: barevial@fldubai.com
+
+## Open sourcing question (send with next vendor message)
+CBL-514 (DYRK1B inhibitor, adipocyte apoptosis) — do you stock it, and at what wholesale price for 20 mg vials?
+Retail comps: $60–$111 per 20 mg vial across research vendors (VialTalk, Peptuvia). We want cost under $35.
