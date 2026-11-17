@@ -13,7 +13,7 @@ Subject: Wholesale account + sample COA request — BareVial (RUO storefront)
 Hi — launching a research-peptide storefront (BareVial, RUO). We drop-ship and white-label on a Shopify-compatible flow. Your application form shows integration pending, so reaching you here. Need: wholesale price list, one sample batch COA, US-warehouse dropship terms + blind-ship confirmation, white-label options and lead time. Starting with a sample order then monthly volume.
 
 Storefront: https://barevial.surge.sh/
-Reply to: barevial@fldubai.com
+Reply to: barevial@euploading.com
 
 ## Open sourcing question (send with next vendor message)
 CBL-514 (DYRK1B inhibitor, adipocyte apoptosis) — do you stock it, and at what wholesale price for 20 mg vials?

@@ -85,7 +85,31 @@ document.querySelectorAll("[data-close]").forEach(el => el.onclick = () => { clo
 
 document.getElementById("checkout").onclick = () => {
   if (!cart.length) return toast("Cart is empty");
-  openModal(`<h3>Checkout, soon.</h3><p>The storefront is live and cart-ready. Connect Stripe or a high-risk gateway to take payment — every order ships with its matching batch COA.</p><button class="btn btn-ink btn-block" onclick="closeModal()">Got it</button>`);
+  const sub = cart.reduce((s, c) => { const p = PRODUCTS.find(x => x.id === c.id); return s + p.price * c.q; }, 0);
+  openModal(`<h3>Reserve this order</h3>
+    <p>Enter your email — we confirm stock, send payment options, and dispatch within 24 hours.</p>
+    <input id="orderEmail" type="email" placeholder="you@lab.org" style="width:100%;padding:12px 14px;border:1px solid var(--line2);border-radius:10px;font-family:inherit;font-size:14px;margin-bottom:14px;background:var(--bone)">
+    <div class="coa-row"><span>Items</span><span>${cart.reduce((s,c)=>s+c.q,0)}</span></div>
+    <div class="coa-row"><span>Subtotal</span><span>${money(sub)}</span></div>
+    <button class="btn btn-ink btn-block" style="margin-top:18px" id="placeOrder">Place order</button>
+    <button class="btn btn-line btn-block" style="margin-top:8px" onclick="closeModal()">Keep shopping</button>`);
+  document.getElementById("placeOrder").onclick = async () => {
+    const email = document.getElementById("orderEmail").value.trim();
+    if (!email || !/.+@.+\..+/.test(email)) return toast("Enter a valid email");
+    const btn = document.getElementById("placeOrder"); btn.disabled = true; btn.textContent = "Sending…";
+    const lines = cart.map(c => { const p = PRODUCTS.find(x => x.id === c.id); return c.q + " × " + p.name + " (" + p.mg + ") — " + money(p.price * c.q); }).join(", ");
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/barevial@euploading.com", { method:"POST", headers:{"Content-Type":"application/json", Accept:"application/json"}, body: JSON.stringify({ _subject:"New order — BareVial", _template:"table", _captcha:"false", Customer_email: email, Order: lines, Subtotal: money(sub) }) });
+      const j = await res.json();
+      if (j.success === "true" || j.success === true) {
+        cart = []; persist(); render();
+        openModal(`<h3>Order received.</h3><p>We'll reply to ${email} within one business day with stock confirmation and payment options. Every vial ships with its batch COA.</p><button class="btn btn-ink btn-block" onclick="closeModal()">Done</button>`);
+      } else throw new Error("send failed");
+    } catch (e) {
+      btn.disabled = false; btn.textContent = "Place order";
+      toast("Couldn't send — try again");
+    }
+  };
 };
 
 function openCoa(id){
