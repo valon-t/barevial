@@ -99,7 +99,7 @@ document.getElementById("checkout").onclick = () => {
     const btn = document.getElementById("placeOrder"); btn.disabled = true; btn.textContent = "Sending…";
     const lines = cart.map(c => { const p = PRODUCTS.find(x => x.id === c.id); return c.q + " × " + p.name + " (" + p.mg + ") — " + money(p.price * c.q); }).join(", ");
     try {
-      const res = await fetch("https://formsubmit.co/ajax/barevial@euploading.com", { method:"POST", headers:{"Content-Type":"application/json", Accept:"application/json"}, body: JSON.stringify({ _subject:"New order — BareVial", _template:"table", _captcha:"false", Customer_email: email, Order: lines, Subtotal: money(sub) }) });
+      const res = await fetch("https://formsubmit.co/ajax/orders@barevial.com", { method:"POST", headers:{"Content-Type":"application/json", Accept:"application/json"}, body: JSON.stringify({ _subject:"New order — BareVial", _template:"table", _captcha:"false", Customer_email: email, Order: lines, Subtotal: money(sub) }) });
       const j = await res.json();
       if (j.success === "true" || j.success === true) {
         cart = []; persist(); render();
